@@ -7,6 +7,11 @@ if "%~1" == "--delete" goto reverse_params
 if "%~1" == "--gui" goto reverse_params
 if "%~1" == "--writer" goto reverse_params
 
+if "%~1" == "--list" (
+  call :list_profiles %~2
+  goto :eof
+)
+
 call :begin %~1 %~2
 goto :eof
 
@@ -22,6 +27,10 @@ if "%~2" == "" (
 :begin
 if "%1" == "" (
   call :no_profile
+  goto :eof
+)
+if "%2" == "--list" (
+  call :list_profiles %1
   goto :eof
 )
 if "%2" == "--save" (
@@ -74,6 +83,11 @@ goto :eof
 
 :invalid_profile
 echo No such profile exists.
+goto :eof
+
+:list_profiles
+if "%1" == "" (set fn=*) else (set fn=%1)
+for /f %%a in ('dir %~dp0profiles\%fn%.json /b 2^> nul') do echo %%~na
 goto :eof
 
 :save_profile
