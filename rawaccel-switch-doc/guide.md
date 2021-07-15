@@ -1,0 +1,259 @@
+# Guide for RawAccel Profile Switcher (v1.0.0)
+
+RawAccel Profile Switcher is a simple Batch script that allows you
+to quickly save and switch between different [RawAccel](https://github.com/a1xd/rawaccel)
+settings from the Command-Line Interface (CLI), including the Run
+dialog (by pressing WinKey + R).
+
+To save your current RawAccel settings, press WinKey + R, type in
+`rawaccel-switch quake --save`, and then hit ENTER. To restore these
+settings later, type in `rawaccel-switch quake`. This will
+automatically restore your saved RawAccel settings. When you
+are done playing Quake, you could then type in `rawaccel-switch windows`
+to automatically switch back to the RawAccel settings you prefer to use
+in Windows (assuming you have a saved profile under that name).
+
+![WindowsRunDialogExample](images/WindowsRunDialog.png)
+
+If you prefer, you can also use the simpler command `rawaccel`, rather
+than `rawaccel-switch`, by slightly tweaking the set-up process. This
+is how I personally use it, but to set it up in this way you will also
+be required to edit your Batch script and point it to your particular
+RawAccel program directory. Don't worry, this is relatively easy to do.
+Detailed instructions are found at the [bottom of this guide](#how-to-install-as-rawaccel-rather-than-rawaccel-switch).
+
+![WindowsRunDialogExample2](images/WindowsRunDialog2.png)
+
+----
+
+## How to set up multiple RawAccel profiles
+
+You can manually place your RawAccel `settings.json` files into the
+`profiles` folder, each with unique filenames. These unique filenames
+are the profile names that are used by RawAccel Profile Switcher.
+
+So for example, if you rename your RawAccel `settings.json` file to
+`quake.json`, and then move it into the `profiles` folder, you will
+then be able to enter the command `rawaccel-switch quake` to restore
+these settings later. What the restoration command does is overwrite
+the current `settings.json` file with the `quake.json` file that you
+placed within the `profiles` folder earlier. It will then apply these
+settings to the RawAccel driver itself.
+
+If you use the `--save` parameter, all of this is handled for you. For
+example, by entering the command `rawaccel-switch quake --save`, RawAccel
+Profile Switcher automatically saves the current `settings.json` file
+into the `profiles` folder for you, under the name `quake.json`. So
+this can be used to quickly save profiles without needing to manage
+JSON files manually. The `--save` parameter must come AFTER the
+specified profile name, NOT before.
+
+So for example, to create a secondary RawAccel profile, use the RawAccel
+GUI application as normal to edit your RawAccel settings, and then click
+'Apply'. This will overwrite your `settings.json` file, but thankfully
+your original `quake` profile still exists within the `profiles`
+folder. Now you can enter the command `rawaccel-switch windows --save`
+to automatically save this profile under the `windows` profile name.
+You can now easily switch between the `quake` and `windows` profiles at
+any time by simply typing their unique profile names on the restore
+command.
+
+If you wish to edit the `quake` profile at any time, you can simply
+type `rawaccel-switch quake --gui` to restore the `quake` profile and
+automatically bring up the RawAccel GUI application for editing. Here
+you can change the the RawAccel settings, and then click 'Apply'. Then
+enter the command `rawaccel-switch quake --save` to overwrite your
+existing `quake` profile with the changes you have just made. For more
+information on using the `--gui` parameter, see [below](#using-the-writer-and-gui-parameters).
+
+Always be careful when using the `--save` parameter to overwrite an
+existing profile, as RawAccel Profile Switcher will NOT ask you for any
+confirmation. If you overwrite an existing profile with garbage
+settings, you will not be able to get your old profile back (unless of
+course you make regular backups of your `profiles` folder, which must
+be done manually).
+
+You can save any number of RawAccel profiles.
+
+----
+
+## Using the `writer` and `gui` parameters
+
+By default, RawAccel Profile Switcher will use RawAccel's own GUI
+application to apply restored settings to the driver when the GUI
+application is already running, and `writer.exe` when the GUI
+application is not running.
+
+In other words, if the RawAccel GUI application is already running when
+you enter the `rawaccel-switch quake` command, it will automatically
+close the GUI application, restore the settings from the `quake`
+profile, and then re-launch the GUI application. The GUI application
+itself will then apply the restored settings to the RawAccel driver.
+
+On the other hand, if the RawAccel GUI application is not currently
+running when you enter the `rawaccel-switch quake` command, it will
+simply use `writer.exe` to silently apply the restored settings to the
+RawAccel driver, without ever launching the RawAccel GUI application.
+
+The rationale behind this design is that, if you already have the
+RawAccel GUI application open and you decide that you want to switch
+RawAccel profiles using the `rawaccel-switch` command, you will
+probably want to see the restored settings within the RawAccel GUI
+application immediately. Otherwise, we shouldn't show anything.
+
+This behaviour can be overridden, however. If you wish to enforce the
+use of `writer.exe` to apply the restored settings, or alternatively
+enforce that the RawAccel GUI application is launched, you can use the
+`--writer` or `--gui` parameters respectively. These parameters must
+come AFTER the specified profile name, NOT before. So for example, if
+you enter the command `rawaccel-switch quake --gui` when the RawAccel
+GUI application is NOT currently running, RawAccel Profile Switcher
+will restore the settings from the `quake` profile and then launch the
+GUI application. The GUI application itself will apply the restored
+settings to the RawAccel driver.
+
+Conversely, if the RawAccel GUI application IS already running and you
+enter the command `rawaccel-switch quake --writer`, the GUI application
+will automatically close and `writer.exe` will be used instead to apply
+the restored `quake` settings to the RawAccel driver, without
+re-launching the GUI application. The RawAccel GUI application will
+always close, even with this parameter, as otherwise the settings shown
+within the GUI application will no longer correspond to the currently
+applied settings.
+
+Because of the way RawAccel Profile Switcher uses the RawAccel GUI
+application, it is therefore required that `AutoWriteToDriverOnStartup`
+be set to `true` within the profile JSON files. You can easily set this
+using a text editor, or you can enable this in your current
+`settings.json` file by turning on 'Apply Settings On Startup' within
+the GUI application. It is enabled by default anyway, so it is unlikely
+that you will need to change anything. Without this option being set to
+`true` in the profile JSON files, when the RawAccel GUI application is
+launched by RawAccel Profile Switcher, it will not apply the restored
+settings to the RawAccel driver, or even display the restored settings
+within the GUI application.
+
+RawAccel Profile Switcher will always launch the RawAccel GUI
+application fully maximised, because that is how I personally prefer to
+use the GUI application. Unfortunately, the GUI application does not
+remember the previous window size and positioning, otherwise
+enforcement of this behaviour would not be necessary. If you do not
+like this auto-maximising behaviour, you can edit the Batch script
+(`rawaccel-switch.cmd`) to remove the `/MAX` parameter in the
+`:start_GUI` section.
+
+----
+
+## How to install
+
+To download RawAccel Profile Switcher, please refer to the
+[Releases page](https://github.com/strangebit/RawAccelProfileSwitcher/releases).
+
+Extract `rawaccel-switch.zip` that you downloaded into your RawAccel
+program directory, such that `rawaccel-switch.cmd` exists alongside
+`rawaccel.exe`, `writer.exe`, etc. Doing this should also create an
+empty `profiles` folder. If it does not, just create an empty
+`profiles` folder manually.
+
+Next, you will need to edit your `Path` environment variable to point it
+to your RawAccel program directory. By doing this, the `rawaccel-switch`
+command will become available for you to type on your CLI. To do this, open
+the Start Menu and start typing 'Edit the system environment variables'.
+Launch that when it appears in the suggested results, and then click on
+'Environment variables' at the bottom of Advanced tab of the System
+Properties box that appears.
+
+![EnviornmentVariablesStartMenu](images/EnviornmentVariablesStartMenu.png)
+
+![SystemProperties](images/SystemProperties.png)
+
+From here, select 'Path' under 'User variables' and then click 'Edit'.
+If you prefer, you can edit the 'Path' under 'System variables' instead,
+which will affect all Windows user accounts, rather than just the
+currently logged in user account.
+
+![ChoosePath](images/ChoosePath.png)
+
+From here, click 'New' and add the path of your RawAccel program
+directory, as demonstrated in the screenshot below. Make sure that
+this corresponds to your particular RawAccel program directory; do
+not simply copy the example directory that is used in the screenshot.
+
+![EditPath](images/EditPath.png)
+
+Click OK and, if everything was done successfully, you should now be
+ready to use the `rawaccel-switch` command!
+
+----
+
+## How to install as `rawaccel`, rather than `rawaccel-switch`
+
+If you'd prefer to be able to type `rawaccel quake`, as I do, rather
+than the slightly more cumbersome `rawaccel-switch quake`, you will
+need to follow a different set of installation instructions, and then
+slightly tweak the source code of the Batch file by yourself.
+
+Alternatively, you can simply rename `rawaccel-switch.cmd` to something
+else that is more simple, like `raps.cmd`, and then you will be able to
+type `raps quake` on the CLI instead. This works, but if you want to
+use `rawaccel` as the command it wouldn't work because of the existence
+of `rawaccel.exe` in the RawAccel program directory. In that case,
+typing `rawaccel quake` on the CLI will run `rawaccel.exe`, rather than
+the RawAccel Profile Switcher.
+
+To set up the command as `rawaccel` then, you will need to extract
+`rawaccel-switch.zip` into a separate directory that is unique and
+different from the RawAccel program directory. Then, rename
+`rawaccel-switch.cmd` to `rawaccel.cmd`. Now there are no conflicts
+with `rawaccel.exe`, because it exists in a different directory.
+
+Your RawAccel Profile Switcher directory should now look like this:
+
+![RawAccelProfileSwitcherDir](images/RawAccelProfileSwitcherDir.png)
+
+Next, unlike with the original instructions in the [How to install](#how-to-install)
+section of the guide, you will need to edit your `Path` environment
+variable to point it to the RawAccel Profile Switcher directory that
+you just created, NOT the RawAccel program directory. That way, you
+ensure the `rawaccel.cmd` command will become available on your CLI,
+rather than the `rawaccel.exe` application that exists within the
+RawAccel program directory.
+
+For instructions of how to edit the `Path` environment variable, just
+follow the instructions in the [How to install](#how-to-install)
+section of the Guide, but instead of using the RawAccel program
+directory, use the RawAccel Profile Switcher directory instead, as
+demonstrated in the screenshot below. Again, make sure this corresponds
+to your particular RawAccel Profile Switcher directory; do not simply
+copy the example directory that is used in the screenshot.
+
+![EditPathSeparate](images/EditPathSeparate.png)
+
+Lastly, right-click on `rawaccel.cmd` within the Raw Accel Profile
+Switcher directory and choose `Edit`. This should bring up a text
+editor with the source code of the Batch script for editing. Since
+your Batch script does not live within the RawAccel program directory,
+you will need to tell it where your RawAccel program directory is.
+
+To do this, change the line near the top from `set RawAccelDir=%~dp0`
+to `set RawAccelDir=<RawAccelProgramDir>`, where `<RawAccelProgramDir>`
+is your particular RawAccel program directory, as demonstrated in the
+screenshot below. Make sure that this corresponds to your particular
+RawAccel program directory; do not simply copy the example directory
+that is used in the screenshot.
+
+![EditScript](images/EditScript.png)
+
+If your RawAccel program directory path contains spaces, do NOT enclose
+the path in quotes within the Batch script.
+
+In other words, do NOT use:
+
+`set RawAccelDir="D:\Raw Accel"`
+
+Instead, rather use:
+
+`set RawAccelDir=D:\Raw Accel`.
+
+If everything was done successfully, you should now be ready to use the
+`rawaccel` command!
