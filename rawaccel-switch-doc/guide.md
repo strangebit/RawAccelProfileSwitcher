@@ -45,8 +45,7 @@ example, by entering the command `rawaccel-switch quake --save`, RawAccel
 Profile Switcher automatically saves the current `settings.json` file
 into the `profiles` folder for you, under the name `quake.json`. So
 this can be used to quickly save profiles without needing to manage
-JSON files manually. The `--save` parameter must come AFTER the
-specified profile name, NOT before.
+JSON files manually.
 
 So for example, to create a secondary RawAccel profile, use the RawAccel
 GUI application as normal to edit your RawAccel settings, and then click
@@ -56,24 +55,34 @@ folder. Now you can enter the command `rawaccel-switch windows --save`
 to automatically save this profile under the `windows` profile name.
 You can now easily switch between the `quake` and `windows` profiles at
 any time by simply typing their unique profile names on the restore
-command.
+command. You can save any number of RawAccel profiles.
 
-If you wish to edit the `quake` profile at any time, you can simply
+If you wish to update the `quake` profile at any time, you can simply
 type `rawaccel-switch quake --gui` to restore the `quake` profile and
-automatically bring up the RawAccel GUI application for editing. Here
-you can change the the RawAccel settings, and then click 'Apply'. Then
-enter the command `rawaccel-switch quake --save` to overwrite your
-existing `quake` profile with the changes you have just made. For more
-information on using the `--gui` parameter, see [below](#using-the-writer-and-gui-parameters).
+automatically bring up the RawAccel GUI application for editing. If
+you don't use the `--gui` parameter, you can still open up the GUI
+application yourself afterwards, as you normally would. Here you can
+change tweak your Quake settings, and then click 'Apply'. When you are
+happy with your changes, enter command `rawaccel-switch quake --save`
+to overwrite your existing `quake` profile with the changes you have
+just made. For more information on using the `--gui` parameter, see
+[below](#using-the-writer-and-gui-parameters). You can also manually
+edit the JSON files in the profiles folder with a text editor.
 
 Always be careful when using the `--save` parameter to overwrite an
 existing profile, as RawAccel Profile Switcher will NOT ask you for any
 confirmation. If you overwrite an existing profile with garbage
-settings, you will not be able to get your old profile back (unless of
-course you make regular backups of your `profiles` folder, which must
-be done manually).
+settings, you will not be able to recover your old profile (unless of
+course you make regular personal backups of your `profiles` folder).
 
-You can save any number of RawAccel profiles.
+You can also use the `--delete` parameter to delete a saved profile.
+So for example, typing `rawaccel-switch quake --delete` will cause
+`quake.json` to be deleted from the `profiles` folder, making it
+completely unavailable to be used again. Again, be sure that this is
+what you want to do, as RawAccel Profile Switcher will NOT ask for
+confirmation before doing this. If you delete a profile you will NOT
+be able to recover it, unless you have a personal backup of the JSON
+file.
 
 ----
 
@@ -104,12 +113,11 @@ application immediately. Otherwise, we shouldn't show anything.
 This behaviour can be overridden, however. If you wish to enforce the
 use of `writer.exe` to apply the restored settings, or alternatively
 enforce that the RawAccel GUI application is launched, you can use the
-`--writer` or `--gui` parameters respectively. These parameters must
-come AFTER the specified profile name, NOT before. So for example, if
-you enter the command `rawaccel-switch quake --gui` when the RawAccel
-GUI application is NOT currently running, RawAccel Profile Switcher
-will restore the settings from the `quake` profile and then launch the
-GUI application. The GUI application itself will apply the restored
+`--writer` or `--gui` parameters respectively. So for example, if you
+enter the command `rawaccel-switch quake --gui` when the RawAccel GUI
+application is NOT currently running, RawAccel Profile Switcher will
+restore the settings from the `quake` profile and then launch the GUI
+application. The GUI application itself will apply the restored
 settings to the RawAccel driver.
 
 Conversely, if the RawAccel GUI application IS already running and you
@@ -191,7 +199,7 @@ ready to use the `rawaccel-switch` command!
 If you'd prefer to be able to type `rawaccel quake`, as I do, rather
 than the slightly more cumbersome `rawaccel-switch quake`, you will
 need to follow a different set of installation instructions, and then
-slightly tweak the source code of the Batch file by yourself.
+slightly tweak the source code of the Batch script by yourself.
 
 Alternatively, you can simply rename `rawaccel-switch.cmd` to something
 else that is more simple, like `raps.cmd`, and then you will be able to
@@ -199,7 +207,7 @@ type `raps quake` on the CLI instead. This works, but if you want to
 use `rawaccel` as the command it wouldn't work because of the existence
 of `rawaccel.exe` in the RawAccel program directory. In that case,
 typing `rawaccel quake` on the CLI will run `rawaccel.exe`, rather than
-the RawAccel Profile Switcher.
+RawAccel Profile Switcher.
 
 To set up the command as `rawaccel` then, you will need to extract
 `rawaccel-switch.zip` into a separate directory that is unique and

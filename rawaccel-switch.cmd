@@ -2,21 +2,48 @@
 
 set RawAccelDir=%~dp0
 
-if "%~2"=="--save" (
-  goto save_profile
+if "%~1" == "--save" goto reverse_params
+if "%~1" == "--delete" goto reverse_params
+if "%~1" == "--gui" goto reverse_params
+if "%~1" == "--writer" goto reverse_params
+
+call :begin %~1 %~2
+goto :eof
+
+:reverse_params
+if "%~2" == "" (
+  call :no_profile
+  goto :eof
+) else (
+  call :begin %~2 %~1
   goto :eof
 )
 
-if "%~1"=="" goto no_profile
-if not exist "%~dp0profiles\%~1.json" goto invalid_profile
+:begin
+if "%1" == "" (
+  call :no_profile
+  goto :eof
+)
+if "%2" == "--save" (
+  call :save_profile %1
+  goto :eof
+)
+if not exist "%~dp0profiles\%1.json" (
+  call :invalid_profile
+  goto :eof
+)
+if "%2" == "--delete" (
+  call :delete_profile %1
+  goto :eof
+)
+
 call :kill_rawaccelGUI
+copy "%~dp0profiles\%1.json" "%RawAccelDir%\settings.json" > nul
 
-copy "%~dp0profiles\%~1.json" "%RawAccelDir%\settings.json" > nul
-
-if "%~2"=="--gui" (
+if "%2" == "--gui" (
   call :start_GUI
 ) else (
-  if "%~2"=="--writer" (
+  if "%2" == "--writer" (
     call :start_writer
   ) else (
     if defined restartGUI (
@@ -26,7 +53,6 @@ if "%~2"=="--gui" (
     )
   )
 )
-
 goto :eof
 
 :kill_rawaccelGUI
@@ -47,15 +73,20 @@ echo No profile specified.
 goto :eof
 
 :invalid_profile
-echo Invalid profile specified.
+echo No such profile exists.
 goto :eof
 
 :save_profile
 if not exist "%RawAccelDir%\settings.json" (
-  echo Could not find a RawAccel 'settings.json' file to save as a profile.
+  echo Could not find a RawAccel 'settings.json' file to save.
 ) else (
   mkdir "%~dp0profiles" 2> nul
-  copy "%RawAccelDir%\settings.json" "%~dp0profiles\%~1.json" > nul
-  echo Current RawAccel settings saved as '%~1'.
+  copy "%RawAccelDir%\settings.json" "%~dp0profiles\%1.json" > nul
+  echo Current RawAccel settings saved as '%1'.
 )
+goto :eof
+
+:delete_profile
+del "%~dp0profiles\%1.json" > nul
+echo The '%1' profile was deleted.
 goto :eof
