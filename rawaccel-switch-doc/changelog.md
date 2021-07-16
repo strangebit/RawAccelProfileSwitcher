@@ -8,9 +8,9 @@
 * Updated the [Guide](guide.md) to reflect the above change.
 * Significantly improved the [Guide](guide.md) in a multitude of other ways.
 * Fixed a bug that sometimes caused the RawAccel GUI application to
-    restore when it shouldn't. This was occuring when the script was
+    restore when it shouldn't. This was occurring when the script was
     being used multiple times from the same Command Prompt session,
-    due to an internal variable having global and persistant scope.
+    due to an internal variable having global and persistent scope.
 * Reworked the Batch script code somewhat significantly to use better
     coding practices, but this should hopefully not result in any
     outwards-facing differences or regressions.

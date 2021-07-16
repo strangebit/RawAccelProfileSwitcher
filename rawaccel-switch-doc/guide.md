@@ -43,7 +43,7 @@ accessible to RawAccel Profile Switcher. This will occur without
 asking for confirmation, so be sure that this is what you want to do
 before using this option.
 
-When using `rawaccel-switch` without of the options, this will simply
+When using `rawaccel-switch` without any of the options, this will simply
 restore the specified profile and apply them to your current RawAccel
 settings. For example, `rawaccel-switch windows` will restore and apply
 the `windows` profile to your current RawAccel settings.
@@ -115,7 +115,7 @@ You may also use the `--delete` option to delete a saved profile.
 So for example, typing `rawaccel-switch --delete quake` will cause
 `quake.json` to be deleted from the `profiles` folder, making it
 completely unavailable to be used again. Again, be sure that this is
-what you want to do befpre you use the `--delete` option, as RawAccel
+what you want to do before you use the `--delete` option, as RawAccel
 Profile Switcher will NOT ask for confirmation before doing this.
 If you delete a profile you will NOT be able to recover it, unless you
 have a personal backup of the JSON file.
@@ -279,7 +279,7 @@ example directory that is used in the screenshot.
 
 ![EditPathSeparate](images/EditPathSeparate.png)
 
-Finally, right-click on `rawaccel.cmd` within the Raw Accel Profile
+Finally, right-click on `rawaccel.cmd` within the RawAccel Profile
 Switcher directory and choose `Edit`. This should bring up a text
 editor with the source code of the Batch script for editing. Since
 your Batch script does not live within the RawAccel program directory,

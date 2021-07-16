@@ -43,7 +43,7 @@ accessible to RawAccel Profile Switcher. This will occur without
 asking for confirmation, so be sure that this is what you want to do
 before using this option.
 
-When using `rawaccel-switch` without of the options, this will simply
+When using `rawaccel-switch` without any of the options, this will simply
 restore the specified profile and apply them to your current RawAccel
 settings. For example, `rawaccel-switch windows` will restore and apply
 the `windows` profile to your current RawAccel settings.
@@ -51,7 +51,7 @@ the `windows` profile to your current RawAccel settings.
 When restoring a saved profile, use the `--gui` or `--writer` options
 if you want to enforce that the RawAccel GUI application is launched,
 or that RawAccel's `writer.exe` is used. For more information on using
-these options, see the section of this guide entitled
+these options, see the section of the Guide entitled
 [Using the gui and writer options](rawaccel-switch-doc/guide.md#using-the-gui-and-writer-options).
 
 By using the `--list` option, this will display a list of all of the
