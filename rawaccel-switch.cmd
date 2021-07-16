@@ -3,6 +3,11 @@ setlocal EnableDelayedExpansion
 
 set RawAccelDir=%~dp0
 
+if "%~1" == "--help" (
+  call :display_help
+  exit /b !errorlevel!
+)
+
 rem Handle options to the left of the profile name
 if "%~1" == "--list" (
   call :list_profiles %~2
@@ -161,3 +166,33 @@ rem :delete_profile
 
   exit /b 0
 rem :check_profile
+
+:display_help
+echo Quickly save and switch between different RawAccel profiles.
+echo.
+echo USAGE:
+echo %~n0 [--save ^| --delete ^| --gui ^| --writer] ^<profile-name^>
+echo %~n0 --list [^<profile-name-filter^>]
+echo %~n0 --help
+echo.
+echo   --save      Your current RawAccel settings will be saved into the
+echo               specified profile. If this profile already exists,
+echo               it will be overwritten.
+echo.
+echo   --delete    The specified profile will be deleted.
+echo.
+echo   --gui       Enforce that the RawAccel GUI application is
+echo               launched when restoring the profile.
+echo.
+echo   --writer    Enforce that writer.exe is used
+echo               when restoring the profile.
+echo.
+echo When using %~n0 without any options, the specified profile
+echo will be restored and applied to your current RawAccel settings.
+echo.
+echo   --list      Display a list of saved profiles. You can also specify
+echo               a profile name filter, which can include wildcards.
+echo.
+echo   --help      Display help text.
+echo.
+exit /b 0

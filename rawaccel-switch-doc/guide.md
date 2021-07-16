@@ -30,6 +30,7 @@ at the [bottom of this guide](#how-to-install-as-rawaccel-rather-than-rawaccel-s
 
     rawaccel-switch [--save | --delete | --gui | --writer] <profile-name>
     rawaccel-switch --list [<profile-name-filter>]
+    rawaccel-switch --help
 
 When using the `--save` option, your current RawAccel settings will be
 saved into the specified profile. If a profile already exists under
@@ -59,6 +60,8 @@ profiles by their profile names. You can also specify a filter, which
 can include wildcards. For example, `rawaccel-switch --list fk2_*` will
 display a list of all saved profiles that have an `fk2_` prefix in
 their profile names.
+
+The `--help` option will display the help text.
 
 ----
 
