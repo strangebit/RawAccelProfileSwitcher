@@ -3,7 +3,7 @@ setlocal EnableDelayedExpansion
 
 set RawAccelDir=%~dp0
 
-rem Handle optional parameters on the left of profile name
+rem Handle options to the left of the profile name
 if "%~1" == "--list" (
   call :list_profiles %~2
   exit /b !errorlevel!
@@ -17,11 +17,11 @@ if "%~1" == "--delete" (
   exit /b !errorlevel!
 )
 
-rem Handle --gui and --writer parameters on the left of profile name
-rem by simply calling :restore_profile with the parameters in the
-rem reverse order. Unfortunately, we still need an early check that a
-rem profile name is specified, or else :restore_profile will think the
-rem optional parameter itself is the profile name.
+rem Handle --gui and --writer options to the left of the profile name
+rem by simply calling :restore_profile and passing its parameters in the
+rem reverse order. Unfortunately, we still need an early check that the
+rem profile name is specified, because otherwise :restore_profile will
+rem think the option itself is the profile name.
 if "%~1" == "--gui" (
   call :check_profile 1 %~2
   if !errorlevel! neq 0 exit /b !errorlevel!
@@ -37,7 +37,7 @@ if "%~1" == "--writer" (
   exit /b !errorlevel!
 )
 
-rem Handle optional parameters on the right of profile name
+rem Handle options to the right of the profile name
 if "%~2" == "--list" (
   call :list_profiles %~1
   exit /b !errorlevel!
@@ -52,7 +52,7 @@ if "%~2" == "--delete" (
 )
 
 rem The :restore_profile function already expects the --gui and
-rem --writer parameters to be on the right of the profile name.
+rem --writer options to be to the right of the profile name.
 call :restore_profile %~1 %~2
 exit /b !errorlevel!
 
@@ -124,9 +124,8 @@ rem :list_profiles
     exit /b 5
   )
 
-  rem No need to check !errorlevel! on mkdir, as all
-  rem possible values are valid for our purposes.
-  rem We do not care if the directory already exists.
+  rem No need to check for !errorlevel! on mkdir, as all possible values are
+  rem valid for our purposes. We do not care if the directory already exists.
   mkdir "%~dp0profiles" 2> nul
 
   copy "%RawAccelDir%\settings.json" "%~dp0profiles\%1.json" > nul
@@ -140,7 +139,7 @@ rem :save_profile
   call :check_profile 0 %1
   if !errorlevel! neq 0 exit /b !errorlevel!
 
-  rem No need to check !errorlevel! on del as it will always be 0.
+  rem No need to check !errorlevel! on del as it will always be 0
   del "%~dp0profiles\%1.json" > nul
   echo The %1 profile was deleted.
 
