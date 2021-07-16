@@ -29,7 +29,7 @@ at the [bottom of this guide](#how-to-install-as-rawaccel-rather-than-rawaccel-s
 ## Using RawAccel Profile Switcher
 
     rawaccel-switch [--save | --delete | --gui | --writer] <profile-name>
-    rawaccel-switch --list <profile-name-filter>
+    rawaccel-switch --list [<profile-name-filter>]
 
 When using the `--save` option, your current RawAccel settings will be
 saved into the specified profile. If a profile already exists under
