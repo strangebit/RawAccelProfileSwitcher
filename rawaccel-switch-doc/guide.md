@@ -1,4 +1,4 @@
-# Guide for RawAccel Profile Switcher (v1.0.1)
+# Guide for RawAccel Profile Switcher (v1.0.2)
 
 RawAccel Profile Switcher is a simple Batch script that allows you
 to quickly save and switch between different [RawAccel](https://github.com/a1xd/rawaccel)
