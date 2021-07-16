@@ -54,11 +54,11 @@ or that RawAccel's `writer.exe` is used. For more information on using
 these options, see the section of this guide entitled
 [Using the gui and writer options](#using-the-gui-and-writer-options).
 
-By using the `--list` option, this will display a list of all of the
-saved profiles by their profile names. You can also specify a filter,
-which can include wildcards. For example, `rawaccel-switch --list fk2_*`
-will display a list of all saved profiles that have an `fk2_` prefix
-in their profile names.
+Using the `--list` option will display a list of all of the saved
+profiles by their profile names. You can also specify a filter, which
+can include wildcards. For example, `rawaccel-switch --list fk2_*` will
+display a list of all saved profiles that have an `fk2_` prefix in
+their profile names.
 
 ----
 
