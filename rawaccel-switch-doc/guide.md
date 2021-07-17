@@ -310,4 +310,4 @@ Instead, rather use:
     set RawAccelDir=D:\Raw Accel
 
 If everything was done correctly, you should now be fully configured
-to use the `rawaccel` command! Let's Rock!
+to use the `rawaccel` command! Rip and tear!
