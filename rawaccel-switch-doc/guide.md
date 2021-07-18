@@ -15,7 +15,7 @@ previously-saved profile under that name).
 ![WindowsRunDialogExample](images/WindowsRunDialog.png)
 
 If you prefer, you can also use the simpler `rawaccel` command, rather
-than more cumbersome `rawaccel-switch` command, by slightly tweaking
+than the more cumbersome `rawaccel-switch` command, by slightly tweaking
 the installation process. This is how I personally use it, but to set
 it up in this way you will also be required to edit the Batch script
 yourself to point to your particular RawAccel program directory. Don't
