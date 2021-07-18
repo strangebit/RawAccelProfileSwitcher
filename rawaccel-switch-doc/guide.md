@@ -219,8 +219,8 @@ of the Advanced tab of the System Properties box that appears.
 
 From here, select `Path` under 'User variables', and then click 'Edit'.
 If you prefer, you can edit `Path` under 'System variables' instead,
-which will affect all Windows user accounts, rather than just your
-currently logged in user account.
+which will affect all of your Windows user accounts, rather than just
+your currently logged in user account.
 
 ![ChoosePath](images/ChoosePath.png)
 
@@ -246,12 +246,13 @@ you will need to slightly tweak the source code of the Batch script
 by yourself.
 
 Alternatively, you can simply rename `rawaccel-switch.cmd` to something
-else that is more simple, like `raps.cmd`, and then you would be able
-to type `raps quake` on the CLI instead. This works, but if you want
+else that is more simple, like `raps.cmd`. Then you should be able to
+type `raps quake` on the CLI instead. This works, but, if you want
 to use `rawaccel` as the command, it would not. This is because of the
-existence of the `rawaccel.exe` GUI application in the RawAccel program
-directory. In that case, typing `rawaccel quake` on the CLI will run
-`rawaccel.exe`, rather than RawAccel Profile Switcher's `rawaccel.cmd`.
+existence of the `rawaccel.exe` GUI application within the RawAccel
+program directory. In that case, typing `rawaccel quake` on the CLI
+would run `rawaccel.exe`, rather than RawAccel Profile Switcher's
+`rawaccel.cmd`.
 
 To set up the command as `rawaccel` then, you will need to extract
 `rawaccel-switch.zip` into a separate directory that is unique and
@@ -287,7 +288,7 @@ bring up a text editor with the source code of the Batch script for
 editing. Since under these modified instructions your Batch script
 does not live within your RawAccel program directory anymore, you
 will now need to tell it where your RawAccel program directory is.
-To do this, simply change the line near the top from:
+To do this, simply change the line near the top from
 
     set RawAccelDir=%~dp0
 
