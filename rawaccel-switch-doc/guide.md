@@ -62,7 +62,7 @@ their profile names.
 
 ----
 
-## How to set-up and use multiple RawAccel profiles
+## How to set up and use multiple RawAccel profiles
 
 You can manually place your RawAccel `settings.json` files into the
 `profiles` folder, each with unique filenames. These unique filenames
@@ -76,12 +76,12 @@ the current `settings.json` file with the `quake.json` file that you
 placed within the `profiles` folder earlier. It will then apply these
 settings to the RawAccel driver itself.
 
-If you use the `--save` option, all of the file management is handled for
-you. By entering the command `rawaccel-switch --save quake`, RawAccel
-Profile Switcher automatically saves the current `settings.json` file
-into the `profiles` folder for you, under the name `quake.json`. This
-can be used to quickly save profiles without needing to manage your
-JSON files manually.
+If you use the `--save` option, all of the file management is handled
+for you. By entering the command `rawaccel-switch --save quake`,
+RawAccel Profile Switcher automatically saves the current `settings.json`
+file into the `profiles` folder for you, under the name `quake.json`.
+This can be used to quickly save profiles without needing to manage
+your JSON files manually.
 
 So for example, to create a secondary RawAccel profile, use the RawAccel
 GUI application as normal to edit your RawAccel settings, and then click
@@ -205,21 +205,21 @@ that `rawaccel-switch.cmd` exists alongside `rawaccel.exe`, `writer.exe`,
 etc. Doing this should also create an empty `profiles` folder. If it
 does not, you can create an empty `profiles` folder manually.
 
-Next, you will need to edit your `Path` environment variable to point
-to your RawAccel program directory. By doing this, the `rawaccel-switch`
-command will become available for you to type on your CLI. To do this, open
-the Start Menu and start typing 'Edit the system environment variables'.
-Launch that when it appears in the suggested results, and then click on
-'Environment variables' at the bottom of Advanced tab of the System
-Properties box that appears.
+Next, you will need to edit your `Path` system environment variable to
+point it to your current RawAccel program directory. By doing this, the
+`rawaccel-switch` command will become available to type on your CLI. To
+do this, open the Start Menu and start typing 'Edit the system
+environment variables'. Launch that when it appears in the suggested
+results, and then click on 'Environment variables' at the very bottom
+of the Advanced tab of the System Properties box that appears.
 
 ![EnviornmentVariablesStartMenu](images/EnviornmentVariablesStartMenu.png)
 
 ![SystemProperties](images/SystemProperties.png)
 
-From here, select 'Path' under 'User variables' and then click 'Edit'.
-If you prefer, you can edit the 'Path' under 'System variables' instead,
-which will affect all Windows user accounts, rather than just the
+From here, select `Path` under 'User variables', and then click 'Edit'.
+If you prefer, you can edit `Path` under 'System variables' instead,
+which will affect all Windows user accounts, rather than just your
 currently logged in user account.
 
 ![ChoosePath](images/ChoosePath.png)
@@ -231,7 +231,7 @@ not simply copy the example directory that is used in the screenshot.
 
 ![EditPath](images/EditPath.png)
 
-Click OK and, if everything was done correctly, you should now be fully
+Click OK. If everything was done correctly, you should now be fully
 configured to use the `rawaccel-switch` command! It's time to kick ass
 and chew bubblegum!
 
@@ -241,62 +241,65 @@ and chew bubblegum!
 
 If you would prefer to be able to type `rawaccel quake`, as I do,
 rather than the slightly more cumbersome `rawaccel-switch quake`, you
-will need to follow a different set of installation instructions, and
-then slightly tweak the source code of the Batch script by yourself.
+will need to follow a different set of installation instructions. Then
+you will need to slightly tweak the source code of the Batch script
+by yourself.
 
 Alternatively, you can simply rename `rawaccel-switch.cmd` to something
-else that is more simple, like `raps.cmd`, and then you will be able to
-type `raps quake` on the CLI instead. This works, but if you want to
-use `rawaccel` as the command it would not because of the existence
-of `rawaccel.exe` in the RawAccel program directory. In that case,
-typing `rawaccel quake` on the CLI will run `rawaccel.exe`, rather
-than RawAccel Profile Switcher.
+else that is more simple, like `raps.cmd`, and then you would be able
+to type `raps quake` on the CLI instead. This works, but if you want
+to use `rawaccel` as the command, it would not. This is because of the
+existence of the `rawaccel.exe` GUI application in the RawAccel program
+directory. In that case, typing `rawaccel quake` on the CLI will run
+`rawaccel.exe`, rather than RawAccel Profile Switcher's `rawaccel.cmd`.
 
 To set up the command as `rawaccel` then, you will need to extract
 `rawaccel-switch.zip` into a separate directory that is unique and
-different from the RawAccel program directory. Then, rename
+different to your RawAccel program directory. Then, rename
 `rawaccel-switch.cmd` to `rawaccel.cmd`. Now there are no conflicts
 with `rawaccel.exe`, because it exists in a different directory.
 
-Your RawAccel Profile Switcher directory should now look like this:
+So your RawAccel Profile Switcher directory should now look like this:
 
 ![RawAccelProfileSwitcherDir](images/RawAccelProfileSwitcherDir.png)
 
-Next, you will need to edit your `Path` environment variable to point
-to the RawAccel Profile Switcher directory that you have just created,
-NOT the RawAccel program directory. This way, you ensure the
-`rawaccel.cmd` command will become available on your CLI, rather than
-the `rawaccel.exe` application that exists within the RawAccel
-program directory.
+Next, you will need to edit your `Path` system environment variable to
+point it to your RawAccel Profile Switcher directory. This is the one
+that you have just created, NOT your RawAccel program directory. That
+way, you ensure that the `rawaccel.cmd` command will become available
+on your CLI, rather than the `rawaccel.exe` GUI application that
+exists within your RawAccel program directory.
 
-For instructions of how to edit the `Path` environment variable, just
-follow the same instructions in the [How to install](#how-to-install)
-section of the Guide. But instead of using the RawAccel program
-directory, use the RawAccel Profile Switcher directory, as demonstrated
-in the screenshot below. Again, make sure that this corresponds to your
-particular RawAccel Profile Switcher directory; do not simply copy the
-example directory that is used in the screenshot.
+For instructions on how to edit your `Path` system environment variable,
+just follow the same instructions given in the [How to install](#how-to-install)
+section of the Guide. But, again, rather than using the path of your
+RawAccel program directory, use the path of your RawAccel Profile
+Switcher directory instead, as demonstrated in the screenshot below.
+Again, make sure that this corresponds to your particular RawAccel
+Profile Switcher directory; do not simply copy the example directory
+that is used in the screenshot.
 
 ![EditPathSeparate](images/EditPathSeparate.png)
 
-Finally, right-click on `rawaccel.cmd` within the RawAccel Profile
-Switcher directory and choose `Edit`. This should bring up a text
-editor with the source code of the Batch script for editing. Since
-your Batch script does not live within the RawAccel program directory,
-you will need to tell it where your RawAccel program directory is. 
-To do this, change the line near the top from:
+Finally, right-click on the `rawaccel.cmd` file found within your
+RawAccel Profile Switcher directory and choose `Edit`. This should
+bring up a text editor with the source code of the Batch script for
+editing. Since under these modified instructions your Batch script
+does not live within your RawAccel program directory anymore, you
+will now need to tell it where your RawAccel program directory is.
+To do this, simply change the line near the top from:
 
     set RawAccelDir=%~dp0
 
 to
 
     set RawAccelDir=<RawAccelProgramDir>
-    
+
 where `<RawAccelProgramDir>` is your particular RawAccel program
-directory, as demonstrated in the screenshot below. Once again, make
-sure that this corresponds to your particular RawAccel program
-directory; do not simply copy the example directory that is
-used in the screenshot.
+directory, as demonstrated in the screenshot below. Once again,
+make sure that this corresponds to your particular RawAccel
+program directory; do not simply copy the example directory
+that is used in the screenshot.
 
 ![EditScript](images/EditScript.png)
 
@@ -309,5 +312,5 @@ Instead, rather use:
 
     set RawAccelDir=D:\Raw Accel
 
-If everything was done correctly, you should now be fully configured
-to use the `rawaccel` command! Rip and tear!
+Save the changes. If everything was done correctly, you should now be
+fully configured to use the `rawaccel` command! Rip and tear!
