@@ -168,7 +168,7 @@ rem :delete_profile
 rem :check_profile
 
 :display_help
-echo Quickly save and switch between different RawAccel profiles.
+echo Quickly save and switch between different RawAccel settings.
 echo.
 echo USAGE:
 echo %~n0 [--save ^| --delete ^| --gui ^| --writer] ^<profile-name^>
