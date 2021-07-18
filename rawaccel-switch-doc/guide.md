@@ -45,7 +45,7 @@ asking for confirmation, so be sure that this is what you want to do
 before using this option.
 
 When using `rawaccel-switch` without any of the options, this will simply
-restore the specified profile and apply them to your current RawAccel
+restore the specified profile and apply it to your current RawAccel
 settings. For example, `rawaccel-switch windows` will restore and apply
 the `windows` profile to your current RawAccel settings.
 
@@ -55,11 +55,10 @@ or that RawAccel's `writer.exe` is used. For more information on using
 these options, see the section of this guide entitled
 [Using the gui and writer options](#using-the-gui-and-writer-options).
 
-Using the `--list` option will display a list of all of the saved
-profiles by their profile names. You can also specify a filter, which
-can include wildcards. For example, `rawaccel-switch --list fk2_*` will
-display a list of all saved profiles that have an `fk2_` prefix in
-their profile names.
+Using the `--list` option will display a list of all saved profiles by
+their profile names. You can also specify a filter, which can include
+wildcards. For example, `rawaccel-switch --list fk2_*` will display a
+list of all saved profiles that have names prefixed with `fk2_`.
 
 The `--help` option will display the help text.
 
