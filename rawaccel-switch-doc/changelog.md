@@ -1,10 +1,17 @@
 # Changelog
 
 
+## v1.0.3
+
+* Added a `--help` option to display help text.
+* Updated the [Guide](guide.md) to reflect the above change.
+* Made a few more minor improvements to the [Guide](guide.md).
+
+
 ## v1.0.2
 
-* Added a `--list` option to display a list of all saved profiles by
-    their profile names. You can also specify a filter with wildcards.
+* Added a `--list` option to display a list of all saved profiles.
+    You can also specify a filter, which can include wildcards.
 * Updated the [Guide](guide.md) to reflect the above change.
 * Significantly improved the [Guide](guide.md) in a multitude of other ways.
 * Fixed a bug that sometimes caused the RawAccel GUI application to

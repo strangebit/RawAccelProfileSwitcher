@@ -1,4 +1,4 @@
-# Guide for RawAccel Profile Switcher (v1.0.2)
+# Guide for RawAccel Profile Switcher (v1.0.3)
 
 RawAccel Profile Switcher is a simple Batch script that allows you
 to quickly save and switch between different [RawAccel](https://github.com/a1xd/rawaccel)
@@ -291,7 +291,7 @@ bring up a text editor with the source code of the Batch script for
 editing. Since under these modified instructions your Batch script
 does not live within your RawAccel program directory anymore, you
 will now need to tell it where your RawAccel program directory is.
-To do this, simply change the line near the top from
+To do this, simply change the line near the top from:
 
     set RawAccelDir=%~dp0
 
