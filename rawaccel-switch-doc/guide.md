@@ -101,7 +101,7 @@ automatically bring up the RawAccel GUI application for editing. If
 you don't use the `--gui` option, you can still open up the GUI
 application yourself afterwards, as you normally would. Within the GUI
 application, you can tweak your Quake settings, and then click 'Apply'.
-When you are happy with your changes, enter command
+When you are happy with your changes, enter the command
 `rawaccel-switch --save quake` to overwrite your existing `quake`
 profile with the changes you have just made. You can also manually edit
 the JSON files within the `profiles` folder with a text editor, if you
