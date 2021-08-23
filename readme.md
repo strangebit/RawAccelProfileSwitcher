@@ -71,3 +71,6 @@ To download RawAccel Profile Switcher, please visit the
 
 For help setting up and using RawAccel Profile Switcher, please refer to the
 [Guide](rawaccel-switch-doc/guide.md#how-to-set-up-and-use-multiple-rawaccel-profiles).
+
+## LICENSE
+[CC0 1.0 Universal](LICENSE)
