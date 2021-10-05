@@ -64,6 +64,29 @@ The `--help` option will display the help text.
 
 ----
 
+## The `Apply Settings.json On GUI Startup` option is recommended
+
+Because of the way RawAccel Profile Switcher sometimes uses the
+RawAccel GUI application to restore its settings, it is strongly
+recommended that you enable the `Advanced` ➞ `Apply Settings.json On GUI Startup`
+option within the GUI application. This option is enabled by default
+anyway, so it is unlikely that you will need to change anything.
+
+You can also enable this option using a text editor by opening up
+RawAccel's `.config` file and making sure the `AutoWriteToDriverOnStartup`
+field is set to `true`.
+
+Without this option being enabled, whenever the RawAccel GUI
+application is launched by RawAccel Profile Switcher, it will not apply
+the restored settings to the RawAccel driver, nor will it even display
+the restored settings within the GUI application. This is probably not
+the behaviour that you want.
+
+You can get away with not enabling this option if you intend to only
+ever use the `--writer` option when restoring a saved profile.
+
+----
+
 ## How to set up and use multiple RawAccel profiles
 
 You can manually place your RawAccel `settings.json` files into the
@@ -174,18 +197,6 @@ re-launching the GUI application. The RawAccel GUI application will
 always close, even with this option, as otherwise the settings shown
 within the GUI application will no longer correspond to the
 currently-applied settings.
-
-Because of the way RawAccel Profile Switcher uses the RawAccel GUI
-application, it is therefore required that `AutoWriteToDriverOnStartup`
-be set to `true` within the profile JSON files. You can easily set this
-using a text editor, or you can enable this in your current
-`settings.json` file by turning on 'Apply Settings On Startup' within
-the GUI application. It is enabled by default anyway, so it is unlikely
-that you will need to change anything. But without this field being set
-to `true` in the profile JSON files, when the RawAccel GUI application
-is launched by RawAccel Profile Switcher, it will not apply the restored
-settings to the RawAccel driver, nor will it even display the restored
-settings within the GUI application.
 
 RawAccel Profile Switcher will always launch the RawAccel GUI application
 fully maximised, because that is how I personally prefer to use the GUI

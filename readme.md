@@ -64,6 +64,29 @@ The `--help` option will display the help text.
 
 ----
 
+## The `Apply Settings.json On GUI Startup` option is recommended
+
+Because of the way RawAccel Profile Switcher sometimes uses the
+RawAccel GUI application to restore its settings, it is strongly
+recommended that you enable the `Advanced` ➞ `Apply Settings.json On GUI Startup`
+option within the GUI application. This option is enabled by default
+anyway, so it is unlikely that you will need to change anything.
+
+You can also enable this option using a text editor by opening up
+RawAccel's `.config` file and making sure the `AutoWriteToDriverOnStartup`
+field is set to `true`.
+
+Without this option being enabled, whenever the RawAccel GUI
+application is launched by RawAccel Profile Switcher, it will not apply
+the restored settings to the RawAccel driver, nor will it even display
+the restored settings within the GUI application. This is probably not
+the behaviour that you want.
+
+You can get away with not enabling this option if you intend to only
+ever use the `--writer` option when restoring a saved profile.
+
+----
+
 ## Download
 
 To download RawAccel Profile Switcher, please visit the
