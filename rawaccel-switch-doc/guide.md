@@ -198,14 +198,6 @@ always close, even with this option, as otherwise the settings shown
 within the GUI application will no longer correspond to the
 currently-applied settings.
 
-RawAccel Profile Switcher will always launch the RawAccel GUI application
-fully maximised, because that is how I personally prefer to use the GUI
-application. Unfortunately, the GUI application does not remember the
-previous window size and positioning, otherwise enforcement of this
-behaviour would not be necessary. If you do not like this auto-maximising
-behaviour, you can edit the Batch script (`rawaccel-switch.cmd`) to
-remove the `/MAX` option in the `:start_GUI` section.
-
 ----
 
 ## How to install
@@ -328,3 +320,30 @@ Instead, rather use:
 
 Save the changes. If everything was done correctly, you should now be
 fully configured to use the `rawaccel` command! Rip and tear!
+
+## Optional patched `rawaccel.exe` GUI Application
+
+RawAccel Profile Switcher will always launch the RawAccel GUI application
+fully maximised. Unfortunately, the GUI application does not remember the
+previous window size and positioning, otherwise enforcement of this
+behaviour would not be necessary. If you do not like this auto-maximising
+behaviour, you can edit the Batch script (`rawaccel-switch.cmd`) to
+remove the `/MAX` option in the `:start_GUI` section.
+
+I also have a patched version of the RawAccel GUI application
+(`rawaccel.exe`) that you may wish to try, which can be found
+[here](https://github.com/strangebit/rawaccel/releases). This patched
+version is intended to be used with the `/MAX` option removed.
+
+The patched version remembers the window's location on exit and
+reapplies it on startup, which is a much better behaviour when using it
+with RawAccel Profile Switcher. It also improves setting the initial
+window size on startup so as not to see the ugly scrollbars, which is
+the reason I was using the `/MAX` option to begin with. With the
+patched exe I find this to be no longer necessary.
+
+A big caveat however is that the window size changes I made may only
+work properly on my machine. I don't really know. Your mileage may
+vary. The code isn't great. I made it just for myself and more work
+would be required before it is worth merging upstream, but I also find
+no harm in sharing it here in case others can benefit from it too.
