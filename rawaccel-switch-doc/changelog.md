@@ -1,6 +1,12 @@
 # Changelog
 
 
+## v1.0.4
+
+* Added a delay before restarting the GUI if the GUI was previously closed.
+* Made further improvements to the [Guide](guide.md).
+
+
 ## v1.0.3
 
 * Added a `--help` option to display help text.
