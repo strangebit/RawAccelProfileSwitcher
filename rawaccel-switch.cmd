@@ -72,12 +72,16 @@ exit /b !errorlevel!
   if !errorlevel! neq 0 exit /b 10
 
   if "%2" == "--gui" (
+    if defined _restartGUI (
+      timeout /t 1 /nobreak > nul
+    )
     call :start_GUI
   ) else (
     if "%2" == "--writer" (
       call :start_writer
     ) else (
       if defined _restartGUI (
+        timeout /t 1 /nobreak > nul
         call :start_GUI
       ) else (
         call :start_writer
